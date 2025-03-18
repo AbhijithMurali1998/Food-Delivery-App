@@ -1,0 +1,71 @@
+/* Nav.css */
+.nav-container {
+  background: rgb(57, 55, 55);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #f3f0f0;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e63946;
+}
+
+.nav-auth {
+  display: flex;
+  gap: 15px;
+}
+
+.login-btn,
+.signup-btn,
+.logout-btn {
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  /* background-color: #1d4ed8; */
+  color: white;
+  border: 1px solid red
+}
+
+.login-btn:hover {
+  background-color: #ef463a;
+}
+
+.signup-btn {
+  /* background-color: #16a34a; */
+  color: white;
+  border: 1px solid orange;
+}
+
+.signup-btn:hover {
+  background-color: #fab010;
+}
+
+.logout-btn {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #b91c1c;
+}

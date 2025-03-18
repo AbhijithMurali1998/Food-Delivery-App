@@ -1,0 +1,191 @@
+/* Cart Container */
+.cart-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f49302;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* Cart Heading */
+.cart-container h2 {
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Cart List */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cart Item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Last item - remove border */
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover Effect */
+.cart-item:hover {
+  background: #ffe5cc;
+}
+
+/* Food Image */
+.cart-food-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+/* Cart Details */
+.cart-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Text Styling */
+.cart-details strong {
+  font-size: 18px;
+  color: #222;
+}
+
+/* Price Styling */
+.cart-details span {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+/* Place Order Button */
+.place-order-btn {
+  background: #28a745;
+  color: white;
+  padding: 12px 18px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease-in-out;
+}
+
+.place-order-btn:hover {
+  background: #218838;
+}
+
+/* Footer Container */
+.can {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 500px;
+}
+
+/* Footer Text */
+.cap {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 22px;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #ff416c;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-food-image {
+    margin-bottom: 10px;
+  }
+
+  .delete-btn {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart-container h2 {
+    font-size: 22px;
+  }
+
+  .cart-details strong {
+    font-size: 16px;
+  }
+
+  .place-order-btn {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+  }
+}

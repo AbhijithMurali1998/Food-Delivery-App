@@ -1,0 +1,129 @@
+/* Main Contact Container */
+.cu {
+  background: url("../assets/backg.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  position: relative;
+  width: 100%;
+}
+
+/* Contact Details */
+.contact-content {
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.6); /* Dark background for better readability */
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Heading Styling */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Paragraph Styling */
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+/* Follow Us Section */
+.follow-section {
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.6); /* Background to improve visibility */
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Social Icons Section */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Social Icons Styling */
+.social-icons a {
+  font-size: 1px;
+  /* display: flex;
+  flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: space-around; */
+  gap: -8px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  /* font-weight: bold; */
+  transition: all 0.3s ease-in-out;
+  color: white;
+  /* background: rgba(255, 255, 255, 0.2); */
+}
+
+/* Specific Styles for Each Social Icon */
+.inst {
+ margin-left: 10px;
+}
+
+ .what {
+  margin-left: 60px;
+}
+
+.thred {
+  margin-left: 49px;
+}
+
+.twit {
+  margin-left: 35px;
+}
+
+/* Hover Effects */
+.social-icons a:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Footer */
+.cb {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  width: 98%;
+  min-width: 200px;
+}
+.par{
+  margin-left: 450px;
+}
+
+
+/* Responsive Fix */
+@media (max-width: 600px) {
+  .social-icons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .social-icons a {
+    font-size: 5px;
+    padding: 0px 1px;
+  }
+}
