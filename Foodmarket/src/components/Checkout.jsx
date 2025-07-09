@@ -2,73 +2,149 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./checkout.css";
 
-const Checkout = () => {
+const Checkout = ({ setCartItems }) => {
   const navigate = useNavigate();
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState(""); // New state for phone number
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [customerDetails, setCustomerDetails] = useState({
+    name: "",
+    address: "",
+    phone: "",
+  });
+  const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [showQRCode, setShowQRCode] = useState(false);
+  const [cartItems, setLocalCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  // Check if user is logged in
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("You need to be logged in to proceed to checkout!");
-      navigate("/login"); // Redirect to login page if not logged in
+    const savedCart = JSON.parse(localStorage.getItem("checkoutCart"));
+    if (savedCart) {
+      setLocalCartItems(savedCart);
+      setTotalPrice(
+        savedCart.reduce((total, item) => total + item.price * item.quantity, 0)
+      );
     }
-  }, [navigate]);
+  }, []);
 
-  const handlePayment = () => {
-    if (!address || !phone || !paymentMethod) {
-      alert("Please fill all details, including your phone number!");
+  const handlePayment = async () => {
+    if (
+      !customerDetails.name ||
+      !customerDetails.address ||
+      !customerDetails.phone
+    ) {
+      alert("⚠️ Please fill in all details.");
       return;
     }
 
-    alert(
-      `Payment successful! Your order has been placed. 🎉\nWe will contact you at ${phone} for delivery.`
-    );
-    navigate("/"); // Redirect to home page after order
+    if (paymentMethod === "upi") {
+      setShowQRCode(true);
+    } else {
+      await placeOrder();
+    }
+  };
+
+  const placeOrder = async () => {
+    setLoading(true);
+    try {
+      const API_URL =
+        import.meta.env.VITE_API_URL || "http://localhost:3001/api";
+
+      const response = await fetch(`${API_URL}/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerDetails,       // ✅ fixed field
+          items: cartItems,
+          total: totalPrice,
+          paymentMethod,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("❌ Backend error response:", data);
+        throw new Error(data?.error || "Order failed");
+      }
+
+      const orderId = data.orderId || data._id;
+      if (!orderId) throw new Error("❌ Order ID not returned from server.");
+
+      alert("✅ Order placed successfully!");
+
+      // ✅ Clear both cart storages
+      localStorage.removeItem("checkoutCart");
+      localStorage.removeItem("cartItems");
+      setCartItems && setCartItems([]); // if prop passed, clear in state too
+
+      localStorage.setItem("latestOrderId", orderId);
+      navigate(`/order-success/${orderId}`);
+    } catch (error) {
+      console.error("❌ Error placing order:", error.message);
+      alert("❌ Failed to place order. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="checkout-container">
-      <h2>📦 Checkout</h2>
+      <h2>Checkout</h2>
+      <div className="checkout-form">
+        <label>Name:</label>
+        <input
+          type="text"
+          value={customerDetails.name}
+          onChange={(e) =>
+            setCustomerDetails({ ...customerDetails, name: e.target.value })
+          }
+        />
 
-      {/* Address Input */}
-      <label>🏠 Address:</label>
-      <input
-        type="text"
-        placeholder="Enter delivery address"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-      />
+        <label>Address:</label>
+        <input
+          type="text"
+          value={customerDetails.address}
+          onChange={(e) =>
+            setCustomerDetails({ ...customerDetails, address: e.target.value })
+          }
+        />
 
-      {/* Phone Number Input */}
-      <label>📞 Contact Number:</label>
-      <input
-        type="tel"
-        placeholder="Enter your phone number"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        pattern="[0-9]{10}" // Ensures only 10-digit phone numbers are entered
-        maxLength="10"
-      />
+        <label>Phone:</label>
+        <input
+          type="text"
+          value={customerDetails.phone}
+          onChange={(e) =>
+            setCustomerDetails({ ...customerDetails, phone: e.target.value })
+          }
+        />
 
-      {/* Payment Method Selection */}
-      <label>💳 Payment Method:</label>
-      <select
-        value={paymentMethod}
-        onChange={(e) => setPaymentMethod(e.target.value)}
-      >
-        <option value="">Select Payment Method</option>
-        <option value="Cash on Delivery">Cash on Delivery</option>
-        <option value="Credit/Debit Card">Credit/Debit Card</option>
-        <option value="UPI">UPI</option>
-      </select>
+        <label>Payment Method:</label>
+        <select
+          value={paymentMethod}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+        >
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+        </select>
 
-      {/* Pay Now Button */}
-      <button className="pay-now-btn" onClick={handlePayment}>
-        Pay Now
-      </button>
+        <h3>Total: ₹{totalPrice}</h3>
+        <button onClick={handlePayment} disabled={loading}>
+          {loading ? "Placing Order..." : "Place Order"}
+        </button>
+      </div>
+
+      {showQRCode && (
+        <div className="qr-code-container">
+          <p>Scan the QR Code to Pay:</p>
+          <img
+            src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=merchant@upi&pn=FoodMarket&mc=1234&tid=TXN123456&tr=${totalPrice}`}
+            alt="UPI QR Code"
+            className="qr-code"
+          />
+          <button onClick={placeOrder} disabled={loading}>
+            ✅ I Have Paid
+          </button>
+        </div>
+      )}
     </div>
   );
 };

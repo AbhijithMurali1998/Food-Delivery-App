@@ -1,48 +1,106 @@
 .checkout-container {
   max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
 }
 
 .checkout-container h2 {
-  font-size: 24px;
+  text-align: center;
+  margin-bottom: 25px;
   color: #333;
-  margin-bottom: 20px;
 }
 
-label {
-  font-size: 16px;
-  color: #555;
-  display: block;
-  margin-top: 15px;
-  text-align: left;
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-input,
-select {
-  width: 90%;
-  padding: 10px;
-  margin-top: 5px;
+.checkout-form label {
+  font-weight: 600;
+  color: #444;
+}
+
+.checkout-form input,
+.checkout-form select {
+  padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
 }
 
-.pay-now-btn {
-  width: 95%;
-  background: #f99e02;
+.checkout-form input:focus,
+.checkout-form select:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+.checkout-form h3 {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  color: #222;
+}
+
+.checkout-form button {
+  background: #3f51b5;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 18px;
+  transition: background 0.3s;
 }
 
-.pay-now-btn:hover {
-  background: #6a3c03;
+.checkout-form button:hover {
+  background: #2c3e9c;
+}
+
+.checkout-form button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px dashed #ccc;
+}
+
+.qr-code-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.qr-code {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.qr-code-container button {
+  background: #28a745;
+  color: white;
+  padding: 10px 16px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.qr-code-container button:hover {
+  background: #218838;
 }

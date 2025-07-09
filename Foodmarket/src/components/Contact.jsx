@@ -11,7 +11,7 @@ const Contact = () => {
 
       {/* Follow Us Section */}
       <div className="follow-section">
-        <h3>Follow Us</h3>
+        <h3 className="fu">Follow Us</h3>
         <div className="social-icons">
           <a
             href="https://www.instagram.com"

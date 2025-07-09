@@ -1,0 +1,70 @@
+/* Centering the login form */
+.admin-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #ff416c, #ff4b2b); /* Dark background */
+}
+
+/* Styling the title */
+.admin-login-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Darker color for better visibility */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Styling the form */
+.admin-login-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(240, 2, 2, 0.2);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input fields */
+.admin-login-input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #fb0000;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+}
+
+/* Focus effect */
+.admin-login-input:focus {
+  border-color: #ff603d;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Login button */
+.admin-login-button {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff416c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Button hover effect */
+.admin-login-button:hover {
+  background-color: #f14040;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  .admin-login-form {
+    width: 90%;
+  }
+}

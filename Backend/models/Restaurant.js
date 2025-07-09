@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
-const restaurantSchema = new mongoose.Schema({
-  name: String,
-  address: String,
-  rating: Number,
-  image: String,
+const RestaurantSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  location: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Restaurant", restaurantSchema);
+const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+
+// Use export default for ES Module compatibility
+export default Restaurant;
+

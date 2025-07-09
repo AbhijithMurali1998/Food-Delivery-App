@@ -9,20 +9,6 @@
   text-align: center;
 }
 
-/* Cart Heading */
-.cart-container h2 {
-  font-size: 26px;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-/* Cart List */
-.cart-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 /* Cart Item */
 .cart-item {
   display: flex;
@@ -31,11 +17,7 @@
   border-bottom: 1px solid #ddd;
   padding: 15px;
   transition: background 0.3s ease-in-out;
-}
-
-/* Last item - remove border */
-.cart-item:last-child {
-  border-bottom: none;
+  position: relative; /* Needed for absolute positioning */
 }
 
 /* Hover Effect */
@@ -58,20 +40,37 @@
   text-align: left;
 }
 
-/* Text Styling */
-.cart-details strong {
-  font-size: 18px;
-  color: #222;
+/* Quantity Controls - Centered */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centering */
+  flex-grow: 1;
+  gap: 10px;
 }
 
-/* Price Styling */
-.cart-details span {
+.quantity-controls button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 6px 10px;
   font-size: 16px;
-  color: #555;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-/* Delete Button */
-.delete-btn {
+.quantity-controls button:hover {
+  background: #e64a19;
+}
+
+.quantity-controls span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Remove Button - Centered on Right */
+.remove-btn {
   background: red;
   color: white;
   border: none;
@@ -79,11 +78,22 @@
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background 0.2s ease-in-out;
+  transition: 0.3s;
+  position: absolute;
+  right: 10px; /* Align to right */
+  top: 50%; /* Move to middle */
+  transform: translateY(-50%); /* Perfect centering */
 }
 
-.delete-btn:hover {
+.remove-btn:hover {
   background: darkred;
+}
+
+/* Total Price */
+h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #222;
 }
 
 /* Place Order Button */
@@ -101,91 +111,4 @@
 
 .place-order-btn:hover {
   background: #218838;
-}
-
-/* Footer Container */
-.can {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 500px;
-}
-
-/* Footer Text */
-.cap {
-  margin: 0 auto;
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* Social Icons */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.social-icons a {
-  color: white;
-  font-size: 22px;
-  transition: color 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: #ff416c;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .cart-container {
-    width: 90%;
-    margin: 30px auto;
-    padding: 15px;
-  }
-
-  .cart-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .cart-food-image {
-    margin-bottom: 10px;
-  }
-
-  .delete-btn {
-    margin-top: 8px;
-  }
-}
-
-@media (max-width: 500px) {
-  .cart-container h2 {
-    font-size: 22px;
-  }
-
-  .cart-details strong {
-    font-size: 16px;
-  }
-
-  .place-order-btn {
-    font-size: 16px;
-    padding: 10px 15px;
-  }
-
-  .social-icons a {
-    font-size: 18px;
-    width: 30px;
-    height: 30px;
-  }
 }

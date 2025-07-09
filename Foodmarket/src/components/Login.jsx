@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
-import "./login.css"; // Import the CSS file
+import "./login.css";
 
-const Login = () => {
+const Login = ({ setIsAuthenticated, setUserRole }) => {
   const [user, setUser] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -13,64 +13,71 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const { data } = await API.post("/auth/login", user);
-      localStorage.setItem("token", data.token);
-      alert("Login successful!");
-      navigate("/");
+      const response = await API.post("/login", user);
+
+      const { token, role } = response.data;
+
+      if (role === "admin") {
+        localStorage.setItem("adminToken", token);
+        setUserRole("admin");
+        setIsAuthenticated(true);
+        navigate("/admin-dashboard");
+      } else {
+        localStorage.setItem("userToken", token);
+        setUserRole("user");
+        setIsAuthenticated(true);
+        navigate("/"); // Redirect to home
+      }
     } catch (error) {
-      alert(error.response?.data?.error || "Login failed");
+      alert(error.response?.data?.error || "Login failed. Please try again.");
     }
   };
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-          className="login-input"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-          className="login-input"
-        />
-        <button type="submit" className="login-button">
-          Login
-        </button>
-      </form>
-      <div className="lon">
-        <p className="lonp">© {new Date().getFullYear()} Feastopia. All rights reserved.</p>
+      <div className="login-form">
+        <h2 className="login-title">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            className="login-input"
+            placeholder="Email"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            className="login-input"
+            placeholder="Password"
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+
         <div className="social-icons">
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-instagram"></i>
+          <a href="#" className="social-icon">
+            <i className="fab fa-google"></i>
           </a>
-          <a
-            href="https://wa.me/yourwhatsappnumber"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-whatsapp"></i>
+          <a href="#" className="social-icon">
+            <i className="fab fa-facebook"></i>
           </a>
-          <a
-            href="https://www.threads.net"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-threads"></i>
-          </a>
+        </div>
+
+        <div className="admin-link">
+          <p>
+            New user? <a href="/signup" className="sign-link">Sign Up</a>
+          </p>
+        </div>
+
+        <div className="lon">
+          <p className="lonp">Powered by Your Company</p>
         </div>
       </div>
     </div>

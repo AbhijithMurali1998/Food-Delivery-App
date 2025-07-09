@@ -1,18 +1,39 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  items: [
-    {
-      food: { type: mongoose.Schema.Types.ObjectId, ref: "Food" },
-      quantity: Number,
-      name: String, // Store food name
-      price: Number, // Store food price
-      image: String, // ✅ Store food image
+const orderSchema = new mongoose.Schema(
+  {
+    customerDetails: {
+      name: { type: String, required: true },
+      address: { type: String, required: true },
+      phone: { type: String, required: true },
     },
-  ],
-  totalPrice: Number,
-  status: { type: String, default: "pending" },
-});
+    items: [
+      {
+        id: { type: String, required: true },
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        quantity: { type: Number, required: true },
+      },
+    ],
+    total: {
+      type: Number,
+      required: true,
+    },
+    paymentMethod: {
+      type: String,
+      enum: ["cod", "upi"],
+      required: true,
+    },
+    status: {
+      type: String,
+      default: "pending",
+    },
+  },
+  {
+    timestamps: true, // Adds createdAt and updatedAt automatically
+  }
+);
 
-module.exports = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("Order", orderSchema);
+
+export default Order;

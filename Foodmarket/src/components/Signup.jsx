@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
-import "./sign.css"; // Import the CSS file
+import "./sign.css";
 
 const Signup = () => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -13,12 +14,14 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await API.post("/auth/signup", user);
+      const response = await API.post("/signup", user);
       alert("Signup successful! Please login.");
       navigate("/login");
     } catch (error) {
-      alert(error.response?.data?.error || "Signup failed");
+      console.error("Signup error:", error);
+      setError(error.response?.data?.error || "Signup failed. Please try again.");
     }
   };
 
@@ -50,38 +53,9 @@ const Signup = () => {
           required
           className="signup-input"
         />
-        <button type="submit" className="signup-button">
-          Signup
-        </button>
+        <button type="submit" className="signup-button">Signup</button>
       </form>
-      <div className="sin">
-        <p className="sip">
-          © {new Date().getFullYear()} Feastopia. All rights reserved.
-        </p>
-        <div className="social-icons">
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://wa.me/yourwhatsappnumber"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-whatsapp"></i>
-          </a>
-          <a
-            href="https://www.threads.net"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-threads"></i>
-          </a>
-        </div>
-      </div>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

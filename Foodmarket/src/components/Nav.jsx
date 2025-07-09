@@ -1,51 +1,79 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Nav.css"; // Import the CSS file
+import "./nav.css";
 
-const Nav = () => {
+const Nav = ({ cartCount = 0 }) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const userToken = localStorage.getItem("userToken");
+  const adminToken = localStorage.getItem("adminToken");
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userToken");
     navigate("/login");
   };
 
+  const handleAdminLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin/login");
+  };
+
   return (
-    <nav className="nav-container">
-      <div className="nav-links">
-        <Link to="/" className="nav-link">
-          Home
-        </Link>
-        <Link to="/list" className="nav-link">
-          Food List
-        </Link>
-        <Link to="/cart" className="nav-link">
-          Cart
-        </Link>
-        <Link to="/contact" className="nav-link">
-          Contact
-        </Link>
-        <Link to="/about" className="nav-link">
-          About
-        </Link>
+    <nav className="navbar">
+      <div className="nav-brand">
+        <Link to="/">Feastopia</Link>
       </div>
-      <div className="nav-auth">
-        {token ? (
-          <button onClick={handleLogout} className="logout-btn">
-            Logout
-          </button>
-        ) : (
+      <ul className="nav-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/list">Menu</Link>
+        </li>
+
+        {userToken && (
           <>
-            <Link to="/login" className="login-btn">
-              Login
-            </Link>
-            <Link to="/signup" className="signup-btn">
-              Signup
-            </Link>
+            <li className="cart-link-wrapper">
+              <Link to="/cart" className="cart-link">
+                Cart
+                {cartCount > 0 && (
+                  <span className="cart-badge">{cartCount}</span>
+                )}
+              </Link>
+            </li>
+            <li>
+              <Link to="/orders">My Orders</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
           </>
         )}
-      </div>
+
+        {adminToken && !userToken && (
+          <>
+            <li>
+              <Link to="/admin-dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <button onClick={handleAdminLogout}>Logout</button>
+            </li>
+          </>
+        )}
+
+        {!userToken && !adminToken && (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/admin/login">Admin</Link>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
 };

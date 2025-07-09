@@ -1,16 +1,24 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001/api", // Change this to your deployed backend URL later
+  baseURL: "http://localhost:3001/api", // Backend base URL
 });
 
-// Attach token to requests if logged in
-API.interceptors.request.use((req) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    req.headers.Authorization = `Bearer ${token}`;
-  }
-  return req;
-});
+API.interceptors.request.use(
+  (req) => {
+    // First check for admin token, then user token fallback
+    const adminToken = localStorage.getItem("adminToken");
+    const userToken = localStorage.getItem("userToken");
+
+    const token = adminToken || userToken;
+
+    if (token) {
+      req.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return req;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default API;

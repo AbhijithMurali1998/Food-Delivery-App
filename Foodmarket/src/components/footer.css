@@ -112,7 +112,9 @@ p {
 .par{
   margin-left: 450px;
 }
-
+.fu{
+  color: white;
+}
 
 /* Responsive Fix */
 @media (max-width: 600px) {
