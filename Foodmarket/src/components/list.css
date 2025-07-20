@@ -1,152 +1,211 @@
-/* list.css */
+/* Reset */
 body {
-  background: url(../assets/aboutback.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f8f8f8;
 }
 
+/* List Container */
 .list-container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 20px;
-  background: rgb(5, 5, 5);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
+  padding: 4rem 2rem;
+  background: url('../assets/bgblur.jpg') no-repeat center center/cover;
+  backdrop-filter: blur(5px);
+  min-height: 100vh;
+  color: #333;
+  position: relative;
+  z-index: 1;
 }
 
+/* Section Title */
 .section-title {
-  font-size: xx-large;
-  font-weight: bold;
-  font-family: fantasy;
-  margin-bottom: 15px;
-  color: #ff0000;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-}
-
-.list-item {
-  background: #f9f9f9;
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.list-item:hover {
-  background: #e63946;
-  color: white;
-}
-
-/* Food list styling */
-.food-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.food-item {
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 200px;
-  height: 260px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #ff4d5b;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.food-details {
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;
+/* Food List Grid */
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
+/* Food Card */
+.food-item {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Food Image */
 .food-image {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  border-radius: 10px;
-  background-color: #eee;
+  border-radius: 15px;
+  margin-bottom: 1rem;
 }
 
-/* Button */
+/* Food Info */
+.food-details {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Add to Cart Button */
 .order-button {
-  background-color: #ff6600;
+  background: #ff4d5b;
   color: white;
   border: none;
-  padding: 8px 12px;
-  margin-top: 5px;
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 20px rgba(255, 77, 91, 0.3);
 }
 
 .order-button:hover {
-  background-color: #e65c00;
+  background: #e63e50;
+  transform: scale(1.05);
 }
 
-/* Footer */
-.ln {
-  background: #222;
-  color: white;
+/* Error Message */
+.error-message {
+  color: red;
   text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
+  font-size: 1.2rem;
 }
 
-.lnp {
-  margin: 0;
-  font-size: 14px;
+/* Highlight Section */
+.highlight {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ff4d5b;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Hotel List (Card Grid) */
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Hotel Card */
+.hotel-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.hotel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hotel-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.hotel-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Footer Section */
+.ln {
+  margin-top: 60px;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.8); /* pure black with slight transparency */
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+/* Footer Text */
+.ln{
+  margin-top: 60px;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 10;
+}
+.lnp,
+.footer-text {
+  font-size: 0.95rem;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Social Icons */
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 5px;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
 }
 
 .social-icons a {
-  color: white;
-  font-size: 20px;
-  transition: color 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  text-decoration: none;
+  color: #f0f0f0;
+  font-size: 24px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #ff416c;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive footer text */
-@media (max-width: 768px) {
-  .lnp {
-    margin: 0 auto;
-    text-align: center;
-  }
+  transform: scale(1.3);
+  color: #ff4d5b;
 }

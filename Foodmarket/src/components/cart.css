@@ -1,114 +1,223 @@
+/* Body Background */
+body {
+  background: url("../assets/foodm.avif") no-repeat center center/cover;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
 /* Cart Container */
 .cart-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #f49302;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
   text-align: center;
+}
+
+/* Cart Title */
+.cart-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Cart List */
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Cart Item */
 .cart-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  padding: 15px;
-  transition: background 0.3s ease-in-out;
-  position: relative; /* Needed for absolute positioning */
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
-/* Hover Effect */
 .cart-item:hover {
-  background: #ffe5cc;
+  transform: scale(1.02);
 }
 
 /* Food Image */
 .cart-food-image {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-right: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
 }
 
 /* Cart Details */
 .cart-details {
   flex-grow: 1;
   text-align: left;
+  color: #444;
 }
 
-/* Quantity Controls - Centered */
+.cart-details strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Quantity Controls */
 .quantity-controls {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centering */
-  flex-grow: 1;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 10px;
 }
 
 .quantity-controls button {
   background: #ff5722;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 6px 10px;
+  padding: 6px 14px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
+  border-radius: 50px;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .quantity-controls button:hover {
   background: #e64a19;
+  transform: scale(1.05);
 }
 
 .quantity-controls span {
   font-size: 16px;
   font-weight: bold;
+  width: 24px;
+  text-align: center;
 }
 
-/* Remove Button - Centered on Right */
+/* Remove Button */
 .remove-btn {
-  background: red;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
   color: white;
   border: none;
   padding: 6px 12px;
-  font-size: 16px;
+  font-size: 13px;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-  position: absolute;
-  right: 10px; /* Align to right */
-  top: 50%; /* Move to middle */
-  transform: translateY(-50%); /* Perfect centering */
+  transition: background 0.3s, transform 0.3s;
 }
 
 .remove-btn:hover {
-  background: darkred;
+  background: #c82333;
+  transform: scale(1.05);
 }
 
 /* Total Price */
 h3 {
-  margin-top: 20px;
-  font-size: 20px;
+  font-size: 1.5rem;
   color: #222;
+  margin-top: 30px;
 }
 
 /* Place Order Button */
 .place-order-btn {
-  background: #28a745;
+  background: linear-gradient(to right, #28a745, #5ec46d);
   color: white;
-  padding: 12px 18px;
-  font-size: 18px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   cursor: pointer;
-  margin-top: 15px;
-  transition: background 0.3s ease-in-out;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 18px rgba(40, 167, 69, 0.25);
 }
 
 .place-order-btn:hover {
-  background: #218838;
+  background: linear-gradient(to right, #218838, #4bbf5c);
+  transform: scale(1.03);
+}
+
+/* Empty Cart Message */
+.cart-container p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* --- Footer Styles --- */
+.dn {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #fff;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dnp {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #f0f0f0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff4d5b;
+  transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .cart-food-image {
+    width: 100%;
+    height: 180px;
+  }
+
+  .remove-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+  }
+
+  .place-order-btn {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .social-icons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 }

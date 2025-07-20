@@ -1,100 +1,101 @@
-/* nav.css */
-
+/* ===== Navbar Styling ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #141414;
-  padding: 1rem 2rem;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  position: relative;
+  background: linear-gradient(to right, #ff6f61, #ff9472);
+  padding: 18px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-brand a {
-  color: #ff6347;
+  color: white;
   font-size: 1.8rem;
   font-weight: bold;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
+.nav-brand a:hover {
+  opacity: 0.8;
+}
+
+/* ===== Navigation Links ===== */
 .nav-links {
   display: flex;
-  gap: 1.5rem;
   list-style: none;
+  gap: 25px;
   align-items: center;
-  margin: 0;
-  padding: 0;
 }
 
-.nav-links li {
-  position: relative;
-}
-
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-  position: relative;
-  display: inline-block;
-}
-
-.nav-links li a:hover {
-  color: #ff6347;
-}
-
-.nav-links li button {
-  background-color: #ff6347;
+.nav-links a {
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-links li button:hover {
-  background-color: #e0533d;
+.nav-links a:hover {
+  color: #fff3e0;
+  transform: translateY(-2px);
 }
 
-/* Cart badge */
+/* ===== Cart Badge ===== */
+.cart-link {
+  position: relative;
+}
+
 .cart-badge {
   position: absolute;
-  top: -6px;
+  top: -8px;
   right: -12px;
-  background-color: red;
-  color: white;
+  background: #fff;
+  color: #ff5722;
   font-size: 0.7rem;
-  font-weight: bold;
-  padding: 2px 6px;
+  padding: 3px 6px;
   border-radius: 50%;
-  animation: pop 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Simple pop animation */
-@keyframes pop {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* ===== Logout Buttons ===== */
+.nav-links button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Responsive for small screens */
+.nav-links button:hover {
+  background-color: #fff;
+  color: #ff6f61;
+  transform: scale(1.05);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
   .navbar {
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
+    padding: 20px;
   }
 
-  .nav-links {
-    flex-direction: column;
-    gap: 0.8rem;
+  .nav-brand {
+    margin-bottom: 10px;
   }
 }

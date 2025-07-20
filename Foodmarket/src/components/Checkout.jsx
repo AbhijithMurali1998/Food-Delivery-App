@@ -87,6 +87,7 @@ const Checkout = ({ setCartItems }) => {
   };
 
   return (
+    <>
     <div className="checkout-container">
       <h2>Checkout</h2>
       <div className="checkout-form">
@@ -146,6 +147,37 @@ const Checkout = ({ setCartItems }) => {
         </div>
       )}
     </div>
+    <div className="dn">
+        <p className="dnp">
+          © {new Date().getFullYear()} Feastopia. All rights reserved.
+        </p>
+
+        {/* Social Media Icons */}
+        <div className="social-icons">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://wa.me/yourwhatsappnumber"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-whatsapp"></i>
+          </a>
+          <a
+            href="https://www.threads.net"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-threads"></i>
+          </a>
+        </div>
+      </div>
+      </>
   );
 };
 
