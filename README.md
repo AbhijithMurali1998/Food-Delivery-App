@@ -1,4 +1,4 @@
-                  FoodMarket – Online Food Delivery App
+  FoodMarket – Online Food Delivery App
 
 [Frontend: React] [Backend: Node.js] [API: Express] [Database: MongoDB] [License: MIT] [Status: Active]
 
