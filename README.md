@@ -1,4 +1,4 @@
-                                                                   FoodMarket – Online Food Delivery App
+                                                                FoodMarket – Online Food Delivery App
  #  FoodMarket – Online Food Delivery App
  FoodMarket is a full-stack web application that allows users to browse restaurants, view menus,
  and order food online.
