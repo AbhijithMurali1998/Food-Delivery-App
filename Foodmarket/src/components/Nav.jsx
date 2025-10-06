@@ -41,10 +41,10 @@ const Nav = ({ cartCount = 0 }) => {
               </Link>
             </li>
             <li>
-              <Link to="/orders">My Orders</Link>
+              <Link to="/contact">Contact</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <button onClick={handleLogout}>Logout</button>
