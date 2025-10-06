@@ -55,9 +55,9 @@
 
 /* Fixed transparent footer */
 .footer {
+  text-align: center;
   position: fixed;
   bottom: 0;
-  text-align: center;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
